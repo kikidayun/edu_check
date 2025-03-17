@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>교구 점검표</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- CSS 파일 연결 -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<!-- 상단 타이틀 컨테이너 -->
+<div class="title-container">
+    <h1>📋 수업용 교구 점검표 🏫</h1>
+    
+    <!-- 사용법 버튼과 팝업 -->
+    <div class="usage-container">
+        <button id="usageButton">사용법</button>
+        <div id="usagePopup" class="popup">
+            <p>🌟 <strong>교구 점검표 보고</strong></p>
+            <p>* 현재 투자 시간 대비 효율성이 낮은 구조입니다.</p>
+            <p> - 보다 단순한 구성으로 개선할 예정입니다.</p>
+            <p> - 부스용 점검표는 간결하게 설계하는 점을 참고 바랍니다.</p><br> 
+            <p>👀 과목 전체 선택 후 <strong>누락된 교구</strong>를 확인해주세요.</p>
+            <p>👍 인원은 자동화되어 있지만 <strong>직접 수정</strong> 가능합니다.</p>
+            <p>⚠️ 교구 역시 <strong>자동화</strong>되어 있으니 수량 확인 바랍니다.</p><br>
+            <p>📌 <strong>교구 점검표 사용안내</strong></p> 
+            <p>1. 학교명, 수업 차시와 횟수, 인원을 입력하세요.</p>
+            <p>2. 해당 <strong>과목</strong>을 선택하세요.</p>
+            <p>3. <strong>2개 반 이상</strong>인 경우, 프로그램명 옆 숫자를 수정하세요.</p>
+            <p>4. 메모에는 <strong>카트, 현수막 등 특이사항</strong>을 입력하세요.</p>
+            <p>5. <strong>"선택한 과목 확인"</strong>을 눌러 프로그램을 확인하세요.</p>
+            <p>6. <strong>"인쇄"</strong> 버튼을 눌러 출력 후 교구를 챙겨보세요.</p><br>           
+            <button id="closePopup">닫기</button>
+        </div>
+    </div>
+</div>
+
+
+
+    <form id="classForm">
+        <!-- "전체 선택" 버튼을 입력 폼 옆에 배치 -->
+        <div class="form-header">
+            <input type="text" name="schoolName" placeholder="학교명 입력" class="input-field">
+            <div class="input-group">
+                <input type="number" name="lessonCount" min="1" placeholder="수업" class="input-field">
+                <span>차시</span>
+            </div>
+            <div class="input-group">
+                <input type="number" name="lessonFrequency" min="1" placeholder="횟수" class="input-field">
+                <span>회</span>
+            </div>
+            <div class="input-group">
+                <input type="number" name="totalStudents" id="totalStudents" min="1" placeholder="인원" class="input-field">
+                <span>명</span>
+            </div>
+            <button type="button" onclick="toggleAllClasses()">과목 전체 선택</button>
+        </div>
+
+        
+        <!-- 신산업 분야 -->
+        <div class="category-container category-new-industry">
+            <h3>🚀 신산업</h3>
+        <div class="material-item">
+            <input type="checkbox" id="class-1" name="class1" value="① 신소재(메타물질)"> <span>① 신소재(메타물질)</span>
+            <input type="number" name="count1" min="1" value="1" class="number-input">
+        </div>
+
+        <div class="material-item">
+            <input type="checkbox" id="class-2" name="class2" value="② 반도체"> <span>② 반도체</span>
+            <input type="number" name="count2" min="1" value="1" class="number-input">
+        </div>
+
+        <div class="material-item">
+            <input type="checkbox" id="class-3" name="class3" value="③ 의공학"> <span>③ 의공학</span>
+            <input type="number" name="count3" min="1" value="1" class="number-input">
+            <!-- ✅ 기존 radio → checkbox로 변경하여 다중 선택 가능하게 변경 -->
+            <label class="level-input"><input type="checkbox" name="level3" value="노트북+거짓말탐지기" onclick="autoCheck('class-3')"> 노트북+거짓말탐지기</label>
+            <label class="level-input"><input type="checkbox" name="level3" value="2교시: GSR+심전도" onclick="autoCheck('class-3')"> 2교시: GSR+심전도</label>
+            <label class="level-input"><input type="checkbox" name="level3" value="4교시: 심박수+근전도" onclick="autoCheck('class-3')"> 4교시: 심박수+근전도</label>
+        </div>
+
+        <div class="material-item">
+            <input type="checkbox" id="class-4" name="class4" value="④ 스마트팩토리"> <span>④ 스마트팩토리</span>
+            <input type="number" name="count4" min="1" value="1" class="number-input">
+        </div>
+
+        <div class="material-item">
+            <input type="checkbox" id="class-5" name="class5" value="⑤ 신재생에너지"> <span>⑤ 신재생에너지</span>
+            <input type="number" name="count5" min="1" value="1" class="number-input">
+        </div>
+    </div>
+
+        <!-- AI 분야 -->
+        <div class="category-container category-ai">
+            <h3>🤖 AI</h3>
+        <div class="material-item">
+            <input type="checkbox" id="class-6" name="class6" value="⑥ 머신러닝"> <span>⑥ 머신러닝</span>
+            <input type="number" name="count6" min="1" value="1" class="number-input">
+            <label class="level-input"><input type="checkbox" name="level6" value="컴퓨터실" onclick="autoCheck('class-6')"> 컴퓨터실</label>
+            <label class="level-input"><input type="checkbox" name="level6" value="노트북" onclick="autoCheck('class-6')"> 노트북</label>
+            <label class="level-input"><input type="checkbox" name="level6" value="태블릿" onclick="autoCheck('class-6')"> 태블릿</label>
+        </div>
+
+        <div class="material-item">
+            <input type="checkbox" id="class-7" name="class7" value="⑦ 똑똑한 상상이룸"> <span>⑦ 똑똑한 상상이룸</span>
+            <input type="number" name="count7" min="1" value="1" class="number-input">
+            <!-- ✅ 기존 radio → checkbox로 변경하여 다중 선택 가능하게 변경 -->
+            <label class="level-input"><input type="checkbox" name="level7" value="2교시" onclick="autoCheck('class-7')"> 2교시</label>
+            <label class="level-input"><input type="checkbox" name="level7" value="4교시: 메이커" onclick="autoCheck('class-7')"> 4교시: 메이커</label>
+        </div>
+
+        <div class="material-item">
+            <input type="checkbox" id="class-8" name="class8" value="⑧ 인공지능 딥러닝"> <span>⑧ 인공지능 딥러닝</span>
+            <input type="number" name="count8" min="1" value="1" class="number-input">
+        </div>
+
+        <div class="material-item">
+            <input type="checkbox" id="class-9" name="class9" value="⑨ 프롬프트 엔지니어"> <span>⑨ 프롬프트 엔지니어</span>
+            <input type="number" name="count9" min="1" value="1" class="number-input">
+            <label class="level-input"><input type="radio" name="device9" value="컴퓨터실" onclick="autoCheck('class-9')"> 컴퓨터실</label>
+            <label class="level-input"><input type="radio" name="device9" value="교실" onclick="autoCheck('class-9')"> 교실</label>
+        </div>
+    </div>
+
+        <!-- 디지털 리터러시 분야 -->
+        <div class="category-container category-digital-literacy">
+            <h3>📱 디지털 리터러시</h3>
+
+        <div class="material-item">
+            <input type="checkbox" id="class-31" name="class31" value="⑩ 디지털기기 활용"> <span>⑩ 디지털기기 활용</span>
+            <input type="number" name="count31" min="1" value="1" class="number-input">
+        </div>
+
+        <div class="material-item">
+            <input type="checkbox" id="class-10" name="class10" value="⑪ 디지털 리터러시"> <span>⑪ 디지털 리터러시</span>
+            <input type="number" name="count10" min="1" value="1" class="number-input">
+        </div>
+
+        <div class="material-item">
+            <input type="checkbox" id="class-11" name="class11" value="⑫ 빅데이터 경제"> <span>⑫ 빅데이터 경제</span>
+            <input type="number" name="count11" min="1" value="1" class="number-input">
+        </div>
+
+        <div class="material-item">
+            <input type="checkbox" id="class-12" name="class12" value="⑬ 빅데이터 분석"> <span>⑬ 빅데이터 분석</span>
+            <input type="number" name="count12" min="1" value="1" class="number-input">
+        </div>
+
+        <div class="material-item">
+            <input type="checkbox" id="class-31" name="class31" value="⑭ 정보보안"> <span>⑭ 정보보안</span>
+            <input type="number" name="count31" min="1" value="1" class="number-input">
+        </div>
+    </div>
+
+        <!-- 실감 콘텐츠 분야 -->
+        <div class="category-container category-immersive-content">
+            <h3>🎥 실감 콘텐츠</h3>
+
+        <div class="material-item">
+            <input type="checkbox" id="class-13" name="class13" value="⑮ 메타버스"> <span>⑮ 메타버스</span>
+            <input type="number" name="count13" min="1" value="1" class="number-input">
+            <label class="level-input"><input type="radio" name="level13" value="초등" onclick="autoCheck('class-13')"> 초등</label>
+            <label class="level-input"><input type="radio" name="level13" value="중고등" onclick="autoCheck('class-13')"> 중고등</label>
+        </div>
+
+        <div class="material-item">
+            <input type="checkbox" id="class-14" name="class14" value="⑯ VR"> <span>⑯ VR</span>
+            <input type="number" name="count14" min="1" value="1" class="number-input">
+            <label class="level-input"><input type="checkbox" name="level14" value="갈색 VR" onclick="autoCheck('class-14')"> 갈색 VR</label>
+            <label class="level-input"><input type="checkbox" name="level14" value="파랑 VR" onclick="autoCheck('class-14')"> 파랑 VR</label>
+            <label class="level-input"><input type="checkbox" name="level14" value="홀로그램" onclick="autoCheck('class-14')"> 홀로그램</label>
+        </div>
+
+        <div class="material-item">
+            <input type="checkbox" id="class-15" name="class15" value="⑰ AR"> <span>⑰ AR</span>
+            <input type="number" name="count15" min="1" value="1" class="number-input">
+        </div>
+    </div>
+
+        <!-- 콘텐츠 분야 -->
+        <div class="category-container category-content">
+            <h3>🎨 콘텐츠</h3>
+
+        <div class="material-item">
+            <input type="checkbox" id="class-16" name="class16" value="⑱ 콘텐츠 기획"> <span>⑱ 콘텐츠 기획</span>
+            <input type="number" name="count16" min="1" value="1" class="number-input">
+            <label class="level-input"><input type="checkbox" name="level16" value="2교시" onclick="autoCheck('class-16')"> 2교시</label>
+            <label class="level-input"><input type="checkbox" name="level16" value="3교시" onclick="autoCheck('class-16')"> 3교시</label>
+        </div>
+
+        <div class="material-item">
+            <input type="checkbox" id="class-17" name="class17" value="⑲ 크리에이티브 광고 기획"> <span>⑲ 크리에이티브 광고 기획</span>
+            <input type="number" name="count17" min="1" value="1" class="number-input">
+            <label class="level-input"><input type="radio" name="level17" value="음향더빙" onclick="autoCheck('class-17')"> 음향더빙</label>
+            <label class="level-input"><input type="radio" name="level17" value="과자광고" onclick="autoCheck('class-17')"> 과자광고</label>
+        </div>
+    </div>
+
+        <!-- SW 분야 -->
+        <div class="category-container category-sw">
+            <h3>💻 SW</h3>
+
+        <div class="material-item">
+            <input type="checkbox" id="class-18" name="class18" value="⑳ 게임 기획"> <span>⑳ 게임 기획</span>
+            <input type="number" name="count18" min="1" value="1" class="number-input">
+            <label class="level-input"><input type="radio" name="level18" value="컴퓨터실" onclick="autoCheck('class-18')"> 컴퓨터실</label>
+            <label class="level-input"><input type="radio" name="level18" value="교실" onclick="autoCheck('class-18')"> 교실</label>
+        </div>
+
+        <div class="material-item">
+            <input type="checkbox" id="class-19" name="class19" value="㉑ 앱 개발"> <span>㉑ 앱 개발</span>
+            <input type="number" name="count19" min="1" value="1" class="number-input">
+            <label class="level-input"><input type="radio" name="level19" value="컴퓨터실" onclick="autoCheck('class-19')"> 컴퓨터실</label>
+            <label class="level-input"><input type="radio" name="level19" value="교실" onclick="autoCheck('class-19')"> 교실</label>
+         </div>
+
+        <div class="material-item">
+            <input type="checkbox" id="class-20" name="class20" value="㉒ 시뮬레이션"> <span>㉒ 시뮬레이션</span>
+            <input type="number" name="count20" min="1" value="1" class="number-input">
+            <label class="level-input"><input type="radio" name="level20" value="컴퓨터실" onclick="autoCheck('class-20')"> 컴퓨터실</label>
+            <label class="level-input"><input type="radio" name="level20" value="교실" onclick="autoCheck('class-20')"> 교실</label>
+        </div>
+    </div>
+        
+        <!-- 메이커 분야 -->
+        <div class="category-container category-maker">
+            <h3>✏️ 메이커</h3>
+
+        <div class="material-item">
+            <input type="checkbox" id="class-21" name="class21" value="㉓ 메이커"> <span>㉓ 메이커</span>
+            <input type="number" name="count21" min="1" value="1" class="number-input">
+            <!-- ✅ 기존 radio → checkbox로 변경하여 다중 선택 가능하게 변경 -->
+            <label class="level-input"><input type="checkbox" name="level21" value="2교시" onclick="autoCheck('class-21')"> 2교시</label>
+            <label class="level-input"><input type="checkbox" name="level21" value="3교시" onclick="autoCheck('class-21')"> 3교시</label>
+        </div>
+
+
+        <div class="material-item">
+            <input type="checkbox" id="class-22" name="class22" value="㉔ 로고 디자인"> <span>㉔ 로고 디자인</span>
+            <input type="number" name="count22" min="1" value="1" class="number-input">
+        </div>
+
+        <div class="material-item">
+            <input type="checkbox" id="class-23" name="class23" value="㉕ 애니메이터"> <span>㉕ 애니메이터</span>
+            <input type="number" name="count23" min="1" value="1" class="number-input">
+        </div>
+
+        <div class="material-item">
+            <input type="checkbox" id="class-24" name="class24" value="㉖ 시각디자인"> <span>㉖ 시각디자인</span>
+            <input type="number" name="count24" min="1" value="1" class="number-input">
+            <label class="level-input"><input type="radio" name="level24" value="Quiver" onclick="autoCheck('class-24')"> Quiver</label>
+            <label class="level-input"><input type="radio" name="level24" value="AI 캐릭터" onclick="autoCheck('class-24')"> AI 캐릭터 </label>
+        </div>
+
+        <div class="material-item">
+            <input type="checkbox" id="class-25" name="class25" value="㉗ 인포메이션 디자인"> <span>㉗ 인포메이션 디자인</span>
+            <input type="number" name="count25" min="1" value="1" class="number-input">
+        </div>
+        
+        <div class="material-item">
+            <input type="checkbox" id="class-26" name="class26" value="㉘ 3D설계 모델링"> <span>㉘ 3D설계 모델링</span>
+            <input type="number" name="count26" min="1" value="1" class="number-input">
+            <label class="level-input"><input type="radio" name="level26" value="3D펜" onclick="autoCheck('class-26')"> 3D펜</label>
+            <label class="level-input"><input type="radio" name="level26" value="팅커캐드" onclick="autoCheck('class-26')"> 팅커캐드</label>
+        </div>
+    </div>
+
+        <!-- 피지컬 컴퓨팅 분야 -->
+        <div class="category-container category-physical-computing">
+            <h3>🤖 피지컬 컴퓨팅</h3>
+
+        <div class="material-item">
+            <input type="checkbox" id="class-27" name="class27" value="㉙ 로봇"> <span>㉙ 로봇</span>
+            <input type="number" name="count27" min="1" value="1" class="number-input">
+            <label class="level-input"><input type="checkbox" name="level27" value="유킷" onclick="autoCheck('class-27')"> 유킷</label>
+            <label class="level-input"><input type="checkbox" name="level27" value="지무" onclick="autoCheck('class-27')"> 지무</label>
+            <label class="level-input"><input type="checkbox" name="level27" value="네오봇" onclick="autoCheck('class-27')"> 네오봇</label>
+        </div>
+
+        <div class="material-item">
+            <input type="checkbox" id="class-28" name="class28" value="㉚ 디지털 헬스"> <span>㉚ 디지털 헬스</span>
+            <input type="number" name="count28" min="1" value="1" class="number-input">
+        </div>
+
+        <div class="material-item">
+            <input type="checkbox" id="class-29" name="class29" value="㉛ 자율주행"> <span>㉛ 자율주행</span>
+            <input type="number" name="count29" min="1" value="1" class="number-input">
+        </div>
+
+        <div class="material-item">
+            <input type="checkbox" id="class-30" name="class30" value="㉜ 모빌리티"> <span>㉜ 모빌리티</span>
+            <input type="number" name="count30" min="1" value="1" class="number-input">
+            <label class="level-input"><input type="radio" name="level30" value="모빌리티" onclick="autoCheck('class-30')"> 모빌리티</label>
+            <label class="level-input"><input type="radio" name="level30" value="네오봇" onclick="autoCheck('class-30')"> 네오봇</label>
+        </div>
+    </div>
+        
+    
+        <!--경영 분야 -->
+        <div class="category-container category-management">
+            <h3>💼 기업가 정신</h3>
+
+        <div class="material-item">
+            <input type="checkbox" id="class-32" name="class32" value="㉝ 스타트업 설계"> <span>㉝ 스타트업 설계</span>
+            <input type="number" name="count32" min="1" value="1" class="number-input">
+        </div>
+
+        <div class="material-item">
+            <input type="checkbox" id="class-33" name="class33" value="㉞ IMC(통합마케팅커뮤니케이션)"> <span>㉞ IMC(통합마케팅커뮤니케이션)</span>
+            <input type="number" name="count33" min="1" value="1" class="number-input">
+        </div>
+
+        <div class="material-item">
+            <input type="checkbox" id="class-34" name="class34" value="㉟ 경제 전략"> <span>㉟ 경제 전략</span>
+            <input type="number" name="count34" min="1" value="1" class="number-input">
+        </div>
+    </div>
+
+        <!-- 메모 입력 -->
+        <div class="memo-container">
+            <label for="memo">📝 메모:</label><br>
+            <textarea id="memo" name="memo" rows="4" placeholder="카트, 휴대폰, 현수막 수량 등 메모사항 입력하세요" style="width: 98%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); font-family: 'Nanum Gothic', sans-serif; resize: vertical;"></textarea>
+        </div><br>
+
+
+        <!-- 선택한 과목 확인 버튼 -->
+        <button type="button" onclick="showSelectedMaterials()">선택한 과목 확인</button>  
+        <button type="button" onclick="printSelectedMaterials()">인쇄</button>
+    </form>
+
+    <!-- 선택한 과목 리스트 표시 -->
+    <div id="selectedMaterialsList"></div>
+
+    <!-- JavaScript 파일 연결 -->
+    <script src="script.js"></script>
+</body>
+</html>
