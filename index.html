@@ -21,20 +21,17 @@
     <div class="usage-container">
         <button id="usageButton">사용법</button>
         <div id="usagePopup" class="popup">
-            <p>🌟 <strong>교구 점검표 보고</strong></p>
-            <p>* 현재 투자 시간 대비 효율성이 낮은 구조입니다.</p>
-            <p> - 보다 단순한 구성으로 개선할 예정입니다.</p>
-            <p> - 부스용 점검표는 간결하게 설계하는 점을 참고 바랍니다.</p><br> 
-            <p>👀 과목 전체 선택 후 <strong>누락된 교구</strong>를 확인해주세요.</p>
-            <p>👍 인원은 자동화되어 있지만 <strong>직접 수정</strong> 가능합니다.</p>
-            <p>⚠️ 교구 역시 <strong>자동화</strong>되어 있으니 수량 확인 바랍니다.</p><br>
             <p>📌 <strong>교구 점검표 사용안내</strong></p> 
             <p>1. 학교명, 수업 차시와 횟수, 인원을 입력하세요.</p>
             <p>2. 해당 <strong>과목</strong>을 선택하세요.</p>
             <p>3. <strong>2개 반 이상</strong>인 경우, 프로그램명 옆 숫자를 수정하세요.</p>
-            <p>4. 메모에는 <strong>카트, 현수막 등 특이사항</strong>을 입력하세요.</p>
-            <p>5. <strong>"선택한 과목 확인"</strong>을 눌러 프로그램을 확인하세요.</p>
-            <p>6. <strong>"인쇄"</strong> 버튼을 눌러 출력 후 교구를 챙겨보세요.</p><br>           
+            <p>4. 각 프로그램 <strong>옵션</strong>(교시,장소 등)을 선택해주세요.</p>
+            <p>5. 메모에는 <strong>카트, 현수막 등 특이사항</strong>을 입력하세요.</p>
+            <p>6. <strong>"선택한 과목 확인"</strong>을 눌러 프로그램을 확인하세요.</p>
+            <p>7. <strong>"인쇄"</strong> 버튼을 눌러 출력 후 교구를 챙겨보세요.</p><br>      
+            
+            <p>💡 <strong>옵션</strong> 미션택시 교구 없음으로 나옵니다.</p> 
+            <p>💡 <strong>출력</strong>시 컬러설정 확인해주세요.</p> 
             <button id="closePopup">닫기</button>
         </div>
     </div>
@@ -295,7 +292,7 @@
         <div class="material-item">
             <input type="checkbox" id="class-30" name="class30" value="㉜ 모빌리티"> <span>㉜ 모빌리티</span>
             <input type="number" name="count30" min="1" value="1" class="number-input">
-            <label class="level-input"><input type="radio" name="level30" value="모빌리티" onclick="autoCheck('class-30')"> 모빌리티</label>
+            <label class="level-input"><input type="radio" name="level30" value="라인트레이서" onclick="autoCheck('class-30')"> 라인트레이서</label>
             <label class="level-input"><input type="radio" name="level30" value="네오봇" onclick="autoCheck('class-30')"> 네오봇</label>
         </div>
     </div>

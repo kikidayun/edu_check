@@ -22,6 +22,7 @@ h1 {
     position: relative; /* 팝업 위치 조정을 위해 설정 */
 }
 
+
 /* 📌 타이틀 스타일 */
 .title-container h1 {
     font-size: 26px;
@@ -31,6 +32,7 @@ h1 {
     display: flex;
     align-items: center;
 }
+
 
 /* 📌 사용법 버튼 */
 .usage-container {
@@ -104,7 +106,7 @@ body {
 
 .form-header button {
     align-self: center; /* 버튼을 입력 필드와 같은 높이로 정렬 */
-    margin-top: 18px; /* 버튼을 약간 아래로 이동 */
+    margin-top: 10px; /* 버튼을 약간 아래로 이동 */
     padding: 8px 15px; /* 버튼 크기 조정 */
 }
 
@@ -303,7 +305,7 @@ h3 {
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .level-input {
@@ -314,6 +316,7 @@ h3 {
 
 /* 인쇄 시에도 스타일 적용 */
 @media print {
+
     body {
         background-color: white; /* 인쇄 배경색 제거 */
     }
@@ -333,7 +336,12 @@ h3 {
     }
 
     .material-item {
-        margin-bottom: 10px; /* 과목 간 간격 */
+        margin-bottom: 20px; /* 과목 간 간격 */
+    }
+
+    .material-item span {
+        font-weight: bold; /* 과목명만 굵게 표시 */
+        font-size: 16px; /* 글자 크기도 약간 키우기 */
     }
 
     .material-item div {
@@ -346,4 +354,13 @@ h3 {
         font-size: 14px !important; /* 글자 크기 */
     }
     
+    .material-item span {
+        font-weight: bold; /* 인쇄할 때만 볼드 적용 */
+    }
+    .print-box {
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+    
+
 }

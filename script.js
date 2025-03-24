@@ -102,6 +102,7 @@ function getMaterialsForClass(className, level = null, device = null) {
         "⑨ 프롬프트 엔지니어": {
             "컴퓨터실": [
                 { name: ["컴퓨터실 사용"] }, 
+                { name: "3-4교시용 유인물-패들렛", ratio: 1, requiresQuantity: true }, 
             ],
             "교실": [
                 { name: "노트북", ratio: 1, requiresQuantity: true }, 
@@ -115,13 +116,14 @@ function getMaterialsForClass(className, level = null, device = null) {
             ],
 
         "⑪ 디지털 리터러시": [
-                { name: "유인물", ratio: 4, requiresQuantity: true },
+                { name: "유인물-출력", ratio: 4, requiresQuantity: true },
                 { name: "태블릿", ratio: 1, requiresQuantity: true },
                 { name: ["터치펜"] },
             ],
 
         "⑫ 빅데이터 경제": [
-                { name: "유인물", ratio: 4, requiresQuantity: true },
+                { name: "경제 유인물-코팅", ratio: 4, requiresQuantity: true },
+                { name: "머리띠", ratio: 1, requiresQuantity: true },
                 { name: ["포스트잇"] },
             ],
 
@@ -133,6 +135,7 @@ function getMaterialsForClass(className, level = null, device = null) {
     
         "⑭ 정보보안": [
                 { name: "금고", ratio: 4, requiresQuantity: true },
+                { name: "유인물-미정", ratio: 4, requiresQuantity: true },
             ],
 
 
@@ -166,7 +169,7 @@ function getMaterialsForClass(className, level = null, device = null) {
             
         "⑱ 콘텐츠 기획": {
             "2교시": [
-                { name: "유인물", ratio: 4, requiresQuantity: true }, 
+                { name: "유인물-출력", ratio: 4, requiresQuantity: true }, 
             ],
             "3교시": [
                 { name: ["놀이교구"] },
@@ -179,7 +182,7 @@ function getMaterialsForClass(className, level = null, device = null) {
             ],
 
             "과자광고": [
-                { name: "유인물", ratio: 4, requiresQuantity: true }, 
+                { name: "유인물-출력", ratio: 4, requiresQuantity: true }, 
                 { name: ["과자박스"], requiresQuantity: true },
                 { name: ["크로마키"], fixedQuantity: 4 } // ✅ 개수 고정 (항상 4개)
             ]
@@ -188,6 +191,7 @@ function getMaterialsForClass(className, level = null, device = null) {
         "⑳ 게임 기획": {
             "컴퓨터실": [
                 { name: ["컴퓨터실 사용"] }, 
+                { name: "3-4교시용 유인물-패들렛", ratio: 1, requiresQuantity: true }, 
             ],
             "교실": [
                 { name: ["노트북"], ratio: 1, requiresQuantity: true }, 
@@ -234,7 +238,7 @@ function getMaterialsForClass(className, level = null, device = null) {
 
         "㉔ 로고 디자인": [
                 { name: "태블릿", ratio: 1, requiresQuantity: true },
-                { name: "유인물", quantity: true, ratio: 1 }, // 반 개수×3
+                { name: "유인물-코팅", ratio: 4, requiresQuantity: true }, 
                 { name: "포토 프린터", requiresQuantity: true, fixedQuantity: 4 }, // 고정 수량: 4
                 { name: ["카트리지", "SELPY폰", "보조배터리","터치펜", "멀티탭"] },
             ],                
@@ -257,8 +261,9 @@ function getMaterialsForClass(className, level = null, device = null) {
         },
 
         "㉗ 인포메이션 디자인": [
-                { name: "태블릿", ratio: 1, requiresQuantity: true },
-                { name: "유인물", requiresQuantity: true, ratio: 1 }, // 반 개수×3
+                { name: "태블릿", ratio: 1, requiresQuantity: true },                
+                { name: ["UX&UI 유인물-코팅"] },
+                { name: "티켓 유인물-출력", ratio: 4, requiresQuantity: true }, 
                 { name: ["터치펜"] },
             ],
 
@@ -296,31 +301,19 @@ function getMaterialsForClass(className, level = null, device = null) {
         "㉚ 디지털 헬스": [
                 { name: "측정장비키트 (악력기, 폐활량계, 산소포화도, 혈압계)", ratio: 4, requiresQuantity: true },
                 { name: "폐활량계 마우스피스", ratio: 1, requiresQuantity: true },
-                { name: "유인물", ratio: 2, requiresQuantity: true },
+                { name: "유인물", ratio: 1, requiresQuantity: true },
             ],
 
 
-        "㉛ 자율주행": {
-            "유킷": [
-                { name: "유킷", ratio: 1, requiresQuantity: true }, 
-                { name: ["유킷 박스"], ratio: 4, requiresQuantity: true },
-                { name: "실습 휴대폰", ratio: 1, requiresQuantity: true }, 
-                { name: ["배틀맵"], requiresQuantity: true, fixedQuantity: 4 } // 고정 수량: 4
-            ],
-            "지무": [
-                { name: "지무", ratio: 1, requiresQuantity: true }, 
-                { name: ["유킷 박스"], ratio: 4, requiresQuantity: true },
-                { name: "실습 휴대폰", ratio: 1, requiresQuantity: true }, 
-            ],
-            "네오봇": [
+        "㉛ 자율주행": [
                 { name: "네오봇", ratio: 1, requiresQuantity: true }, 
                 { name: "네오봇 박스", ratio: 4, requiresQuantity: true }, 
-                { name: ["배틀맵", "건전지", "젠더"] },
-            ]
-        },
+                { name: "실습 휴대폰", ratio: 1, requiresQuantity: true }, 
+                { name: ["자율주행맵"], requiresQuantity: true, fixedQuantity: 6 } // 고정 수량: 6
+        ],
 
         "㉜ 모빌리티": {
-            "모빌리티": [
+            "라인트레이서": [
                 { name: "라인트레이서", ratio: 2, requiresQuantity: true }, 
                 { name: ["노트북"], ratio: 2, requiresQuantity: true },
                 { name: ["충전기·마우스", "멀티탭"] },
@@ -340,10 +333,11 @@ function getMaterialsForClass(className, level = null, device = null) {
                 { name: ["or 태블릿"], ratio: 1, requiresQuantity: true },
             ],
 
-        "㉞ IMC 통합마케팅커뮤니케이션": [
+        "㉞ IMC(통합마케팅커뮤니케이션)": [
                 { name: "유인물", ratio: 4, requiresQuantity: true },
-                { name: "태블릿", ratio: 1, requiresQuantity: true },
-                { name: ["터치펜"] },
+                { name: "화이트보드", ratio: 4, requiresQuantity: true },
+                { name: "보드마카", ratio: 4, requiresQuantity: true },
+                { name: ["상세표-코팅"] },
             ],
             
         "㉟ 경제전략": [
@@ -390,6 +384,7 @@ function toggleAllClasses() {
         toggleAdditionalOptions(checkbox);
     });
 }
+
 
 
 function updateProgramCount() {
@@ -459,11 +454,11 @@ function showSelectedMaterials() {
         const classNumber = checkbox.name.replace(/[^0-9]/g, '');
         const countInput = document.querySelector(`input[name="count${classNumber}"]`);
         const count = parseInt(countInput?.value) || 1;
-
+    
         const levels = Array.from(document.querySelectorAll(`input[name="level${classNumber}"]:checked`))
                             .map(input => input.value);
         const device = document.querySelector(`input[name="device${classNumber}"]:checked`)?.value || null;
-
+    
         let materials = [];
         if (levels.length > 0) {
             levels.forEach(level => {
@@ -472,44 +467,34 @@ function showSelectedMaterials() {
         } else {
             materials = getMaterialsForClass(className, null, device) || [];
         }
-
-        html += `<div>${className} <span class="highlight-text">(${count}개반)</span> - 인원: `;
+    
+        html += `<div class="print-box" style="background-color:rgba(249, 249, 249, 0); border-left: 5px solid #379dc6; padding: 5px; margin-bottom: 3px; border-radius: 3px; page-break-inside: avoid; ">
+                    <h3 style="color: #2b4b6f; margin-bottom: 5px;">📌 ${className} <span style="font-size: 14px; color: #555;">(${count}개반)</span></h3>
+                    <div style="font-size: 14px; margin-bottom: 5px;">인원: `;
+    
         for (let i = 1; i <= count; i++) {
             html += `<input type="number" name="persons-${className}-${i}" class="editable-input" value="${totalStudents}">`;
             if (i < count) html += ' / ';
         }
         html += `</div>`;
-
+    
         if (materials.length > 0) {
-            html += `<div class="materials">`;
+            html += `<div style="margin-top: 3px;"><strong>📦 교구: </strong>`;
             materials.forEach((material, index) => {
                 let quantity = "-";
-
-                // ✅ 횟수(`lessonFrequency`) 증가 반영 대상
-                let isConsumable = [
-                    "갈색 VR", "파랑 VR", "홀로그램", // VR
-                    "머지큐브", // AR
-                    "필라멘트", // 3D펜
-                    "포토 프린터 카트리지", "과자박스",// 프린터 소모품
-                    "유인물" // 유인물도 횟수에 따라 증가
-                ].includes(material.name);
-
+                let isConsumable = ["갈색 VR", "파랑 VR", "홀로그램", "머지큐브", "필라멘트", "포토 프린터 카트리지", "과자박스", "유인물"]
+                    .includes(material.name);
+    
                 if (material.fixedQuantity !== undefined) {
-                    quantity = material.fixedQuantity; // ✅ 고정 수량인 경우
+                    quantity = material.fixedQuantity;
                 } else if (material.ratio) {
-                    quantity = Math.ceil((totalStudents * count) / material.ratio); // ✅ ratio 기준 계산
+                    quantity = Math.ceil((totalStudents * count) / material.ratio);
                 } else if (material.requiresQuantity) {
                     if (Array.isArray(material.name) && material.name.includes("유인물")) {
                         if (["㉔ 로고 디자인", "㉗ 유니버셜 디자인"].includes(className)) {
-                            // ✅ 기본적으로 1차시 1회, 2차시 1회 모두 3장
-                            quantity = 3;
-
-                            // ✅ 반 개수(count)만큼 곱해줌
-                            quantity *= count;
-
-                            // ✅ 2회 이상 진행 시 2배 증가
+                            quantity = 3 * count;
                             if (lessonFrequency > 1) {
-                                quantity *= lessonFrequency / 2; // 🔥 2회일 때만 2배 적용
+                                quantity *= lessonFrequency / 2;
                             }
                         } else if (["㉖ 시각디자인 (Quiver)"].includes(className)) {
                             quantity = count * lessonFrequency;
@@ -519,47 +504,44 @@ function showSelectedMaterials() {
                             quantity = Math.ceil((totalStudents * count) / 4) * lessonFrequency;
                         }
                     } else if (className === "교구") {
-                        quantity = count; // ✅ 교구 항목도 반 개수 적용
+                        quantity = count;
                     } else if (className === "① 신소재" && Array.isArray(material.name) && material.name.some(name => name.includes("키트"))) {
-                        quantity = count; // ✅ 신소재 키트는 횟수 영향 없이 반 개수(count)만큼 증가
+                        quantity = count;
                     } else {
-                        quantity = count * lessonFrequency; // ✅ 기본적으로 반 개수 × 횟수 적용
+                        quantity = count * lessonFrequency;
                     }
                 }
-
-
-
-                // ✅ 횟수(`lessonFrequency`) 증가 반영 (소모품만 * 횟수)
+    
                 if (isConsumable) {
                     quantity *= lessonFrequency;
                 }
-
-                const materialName = Array.isArray(material.name)
-                    ? material.name.join(", ")
-                    : material.name;
-
-                html += `${materialName}`;
+    
+                const materialName = Array.isArray(material.name) ? material.name.join(", ") : material.name;
+    
+                // ✅ 개수가 필요한 경우에만 `<input>` 필드 추가
                 if (material.requiresQuantity || material.ratio || material.fixedQuantity !== undefined) {
-                    html += ` (<input type="number" name="${className}-${materialName}" class="editable-input" value="${quantity}">)`;
+                    html += `${materialName} (<input type="number" name="${className}-${materialName}" class="editable-input" value="${quantity}">)`;
+                } else {
+                    html += `${materialName}`; // ✅ 개수 필요 없는 경우 그냥 텍스트 출력
                 }
-                if (index < materials.length - 1) html += ", ";
+    
+                if (index < materials.length - 1) html += ", "; // ✅ 교구 리스트를 한 줄로 정리
             });
             html += `</div>`;
         } else {
-            html += `<div class="materials">교구: 없음</div>`;
+            html += `<p style="color: #777;">🔸 준비할 교구 없음</p>`;
         }
+        html += `</div>`;
     });
+    
 
     selectedMaterialsListDiv.innerHTML = html;
 }
 
-
-
-
 function printSelectedMaterials() {
     const selectedMaterialsListDiv = document.getElementById("selectedMaterialsList");
-    const memo = document.getElementById("memo")?.value.trim(); // 메모 내용을 가져옴
-    
+    const memo = document.getElementById("memo")?.value.trim();
+
     if (!selectedMaterialsListDiv || selectedMaterialsListDiv.innerHTML.trim() === "") {
         alert("출력할 내용이 없습니다. 먼저 과목을 선택하세요.");
         return;
@@ -567,65 +549,95 @@ function printSelectedMaterials() {
 
     const clonedDiv = selectedMaterialsListDiv.cloneNode(true);
 
-    // input 요소를 텍스트로 변환
+    // ✅ input 요소를 텍스트로 변환
     clonedDiv.querySelectorAll("input").forEach((input) => {
         const value = input.value || "-";
         input.replaceWith(document.createTextNode(value));
     });
-    
-    // ✅ 메모 내용을 추가 (새로운 스타일 적용)
+
+    // ✅ span 태그를 strong 태그로 변환
+    clonedDiv.querySelectorAll("span").forEach((span) => {
+        const boldText = document.createElement("strong");
+        boldText.textContent = span.textContent;
+        span.replaceWith(boldText);
+    });
+
+    // ✅ 메모 추가
     if (memo) {
         const memoDiv = document.createElement("div");
-        memoDiv.className = "memo-container"; // 추가된 스타일 적용
+        memoDiv.className = "memo-container";
         memoDiv.innerHTML = `<strong>📝 확인:</strong> ${memo}`;
         clonedDiv.appendChild(memoDiv);
     }
 
-    // 인쇄 창 생성
+    // ✅ 인쇄 창 열기
     const printWindow = window.open("", "", "height=600,width=800");
-    printWindow.document.write("<html><head><title>수업 기자재 체크리스트</title>");
-    printWindow.document.write('<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">');
+
     printWindow.document.write(`
-        <style>
-            body {
-                font-family: 'Nanum Gothic', sans-serif;
-                line-height: 1.6;
-                padding: 20px;
-            }
-            .school-name {
-                font-size: 22pt;
-                font-weight: bold;
-                margin-bottom: 20px;
-            }
-            div {
-                margin-bottom: 10px;
-            }
-            .materials {
-                margin-left: 15px;
-            }
-            .memo-container {
-                padding: 10px;
-                border-radius: 5px;
-                font-size: 18px;
-                font-weight: bold;                        
-                color: #333; /* 기본 메모 텍스트 색상 */
-            }
-            .memo-container strong {
-                font-weight: bold;
-                color: #007BFF; /* 🔵 파란색 강조 */
-            }
-        </style>
+        <html>
+        <head>
+            <title>수업 기자재 체크리스트</title>
+            <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+            <style>
+                body {
+                    font-family: 'Nanum Gothic', sans-serif;
+                    line-height: 1.6;
+                    padding: 20px;
+                }
+                .school-name {
+                    font-size: 22pt;
+                    font-weight: bold;
+                    margin-bottom: 20px;
+                }
+
+                .material-item {
+                    margin-bottom: 20px; /* 과목 간 간격 */
+                }
+
+                .material-item span {
+                    font-weight: bold; /* 과목명만 굵게 표시 */
+                    font-size: 16px; /* 글자 크기도 약간 키우기 */
+                }
+                div {
+                    margin-bottom: 10px;
+                }
+                strong {
+                    font-size: 16px;
+                    font-weight: bold;
+                    color: #2b4b6f;
+                }
+                .materials {
+                    margin-left: 15px;
+                }
+                .memo-container {
+                    padding: 10px;
+                    border-radius: 5px;
+                    font-size: 18px;
+                    font-weight: bold;
+                    color: #333;
+                }
+                .memo-container strong {
+                    font-weight: bold;
+                    color: #007BFF;
+                }
+            </style>
+        </head>
+        <body>
     `);
-    printWindow.document.write("</head><body>");
-    printWindow.document.write(clonedDiv.innerHTML);
-    printWindow.document.write("</body></html>");
+
+    // ✅ `innerHTML` 대신 `outerHTML`을 사용
+    printWindow.document.body.innerHTML += clonedDiv.outerHTML;
+
+    printWindow.document.write(`</body></html>`);
     printWindow.document.close();
 
-    // 인쇄 실행 (딜레이 추가)
-    setTimeout(() => {
+    printWindow.onload = function () {
         printWindow.print();
-    }, 500);
+    };
 }
+
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
     const checkboxes = document.querySelectorAll('.material-item input[type="checkbox"]');
