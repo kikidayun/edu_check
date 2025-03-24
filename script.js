@@ -299,9 +299,12 @@ function getMaterialsForClass(className, level = null, device = null) {
         },
 
         "㉚ 디지털 헬스": [
-                { name: "측정장비키트 (악력기, 폐활량계, 산소포화도, 혈압계)", ratio: 4, requiresQuantity: true },
+                { name: "악력기", ratio: 4, requiresQuantity: true }, 
+                { name: "산소포화도측정기", ratio: 4, requiresQuantity: true }, 
+                { name: "폐활량측정기", ratio: 4, requiresQuantity: true }, 
+                { name: "혈압측정기", ratio: 4, requiresQuantity: true }, 
                 { name: "폐활량계 마우스피스", ratio: 1, requiresQuantity: true },
-                { name: "유인물", ratio: 1, requiresQuantity: true },
+                { name: "유인물-출력", ratio: 1, requiresQuantity: true },
             ],
 
 
@@ -334,7 +337,7 @@ function getMaterialsForClass(className, level = null, device = null) {
             ],
 
         "㉞ IMC(통합마케팅커뮤니케이션)": [
-                { name: "유인물", ratio: 4, requiresQuantity: true },
+                { name: "유인물-출력", ratio: 4, requiresQuantity: true },
                 { name: "화이트보드", ratio: 4, requiresQuantity: true },
                 { name: "보드마카", ratio: 4, requiresQuantity: true },
                 { name: ["상세표-코팅"] },
